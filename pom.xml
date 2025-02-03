@@ -23,6 +23,14 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub areguig Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/areguig/spring-boot-starter-echo-proxy</url>
+        </repository>
+    </distributionManagement>
+
     <dependencies>
         <!-- Core dependencies -->
         <dependency>
