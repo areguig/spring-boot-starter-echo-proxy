@@ -5,7 +5,6 @@ import io.github.areguig.echoproxy.controller.ProxyController;
 import io.github.areguig.echoproxy.service.ConfigurationStorage;
 import io.github.areguig.echoproxy.service.MvcProxyService;
 import io.github.areguig.echoproxy.service.RequestLogService;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

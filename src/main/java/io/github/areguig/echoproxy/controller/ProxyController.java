@@ -21,11 +21,11 @@ public class ProxyController {
     }
 
     @RequestMapping("/**")
-    public ResponseEntity<? extends Object> handleRequest(final HttpServletRequest request) throws IOException {
+    public ResponseEntity<?> handleRequest(HttpServletRequest request) throws IOException {
         var body = request.getReader().lines().collect(Collectors.joining());
         var serverHttpRequest = new ServletServerHttpRequest(request);
 
-        return this.proxyService.handleRequest(
+        return proxyService.handleRequest(
             request.getRequestURI(),
             HttpMethod.valueOf(request.getMethod()),
             body,

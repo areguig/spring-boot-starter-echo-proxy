@@ -4,6 +4,7 @@ import io.github.areguig.echoproxy.ReactiveTestConfiguration;
 import io.github.areguig.echoproxy.model.ProxyConfig;
 import io.github.areguig.echoproxy.model.ProxyMode;
 import io.github.areguig.echoproxy.service.ConfigurationStorage;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
@@ -13,9 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import java.util.Arrays;
-import java.util.Optional;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @WebFluxTest(ReactiveProxyConfigController.class)
@@ -36,7 +35,7 @@ public class ReactiveProxyConfigControllerTest {
         config.setMode(ProxyMode.MOCK);
         
         when(configurationStorage.getAllConfigs())
-            .thenReturn(Arrays.asList(config));
+            .thenReturn(List.of(config));
 
         webClient.get().uri("/echo-proxy/configs")
                 .accept(MediaType.APPLICATION_JSON)

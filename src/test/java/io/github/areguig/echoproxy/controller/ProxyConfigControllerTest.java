@@ -4,6 +4,7 @@ import io.github.areguig.echoproxy.test.BaseUnitTest;
 import io.github.areguig.echoproxy.model.ProxyConfig;
 import io.github.areguig.echoproxy.model.ProxyMode;
 import io.github.areguig.echoproxy.service.ConfigurationStorage;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -36,7 +37,7 @@ class ProxyConfigControllerTest extends BaseUnitTest {
         config.setMode(ProxyMode.MOCK);
         
         when(configurationStorage.getAllConfigs())
-            .thenReturn(Arrays.asList(config));
+            .thenReturn(List.of(config));
 
         mockMvc.perform(get("/echo-proxy/configs"))
                .andExpect(status().isOk())

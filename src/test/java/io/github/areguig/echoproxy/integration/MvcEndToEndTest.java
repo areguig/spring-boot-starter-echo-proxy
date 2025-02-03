@@ -98,7 +98,7 @@ class MvcEndToEndTest {
         // Configure mock response
         stubFor(
             com.github.tomakehurst.wiremock.client.WireMock.get(path)
-                .willReturn(com.github.tomakehurst.wiremock.client.WireMock.aResponse()
+                .willReturn(aResponse()
                     .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
                     .withHeader("X-Proxy-Header", "proxy-value")
                     .withBody(responseBody)));

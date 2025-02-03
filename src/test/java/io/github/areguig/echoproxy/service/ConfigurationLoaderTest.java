@@ -5,7 +5,6 @@ import io.github.areguig.echoproxy.configuration.EchoProxyProperties;
 import io.github.areguig.echoproxy.model.ProxyConfig;
 import io.github.areguig.echoproxy.model.ProxyMode;
 import org.junit.jupiter.api.Test;
-import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
 import java.util.List;
@@ -19,7 +18,7 @@ class ConfigurationLoaderTest {
     private final ConfigurationLoader loader = new ConfigurationLoader(objectMapper, properties);
 
     @Test
-    void shouldLoadValidConfiguration() throws IOException {
+    void shouldLoadValidConfiguration() {
         // Given
         properties.setConfigFile("test-config.json");
         
@@ -31,7 +30,7 @@ class ConfigurationLoaderTest {
             .isNotNull()
             .hasSize(1);
         
-        ProxyConfig config = configs.get(0);
+        ProxyConfig config = configs.getFirst();
         assertThat(config.getUrlPattern()).isEqualTo("/test-endpoint");
         assertThat(config.getMode()).isEqualTo(ProxyMode.MOCK);
     }

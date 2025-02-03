@@ -8,12 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest(
-    classes = EchoProxyPropertiesTest.TestConfig.class,
-    properties = {
-        "echo.proxy.config-file=echo-proxy-config.json"
-    }
-)
+@SpringBootTest(classes = EchoProxyPropertiesTest.TestConfig.class, properties = "echo.proxy.config-file=echo-proxy-config.json")
 class EchoProxyPropertiesTest {
 
     @Configuration
