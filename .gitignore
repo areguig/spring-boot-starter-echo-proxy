@@ -1,7 +1,36 @@
-/target
-/out
-/.idea
-.vscode
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# VS Code
+.vscode/
+.settings/
+.classpath
+.project
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Test reports
+**/surefire-reports/
+**/failsafe-reports/
+**/jacoco/
+
 ROADMAP.md
 CHANGELOG.md
 INITIAL_PROMPT.md
