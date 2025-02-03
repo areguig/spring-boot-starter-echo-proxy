@@ -1,0 +1,26 @@
+echo:
+  proxy:
+    enabled: true
+    management-base-path: /echo-proxy
+    config-file: echo-proxy-config.json
+
+logging:
+  level:
+    org.springframework.test: DEBUG
+    io.github.areguig.echoproxy: DEBUG
+
+---
+spring:
+  config:
+    activate:
+      on-profile: mvc
+  main:
+    web-application-type: servlet
+
+---
+spring:
+  config:
+    activate:
+      on-profile: webflux
+  main:
+    web-application-type: reactive 

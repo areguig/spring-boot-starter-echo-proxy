@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "urlPattern": "/test-endpoint",
+    "mode": "MOCK",
+    "responseBody": "{\"message\": \"Mocked Response\"}",
+    "statusCode": 200,
+    "active": true
+  }
+] 
