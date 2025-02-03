@@ -1,6 +1,6 @@
 # Spring Boot Starter Echo Proxy
 
-A Spring Boot starter that provides a configurable proxy/mock server for development and testing purposes. It allows you to easily mock external services or proxy requests to real endpoints with the ability to modify responses.
+A Spring Boot starter that provides a configurable proxy/mock server . It allows you to easily mock external services or proxy requests to real endpoints.
 
 ## Features
 
@@ -14,14 +14,56 @@ A Spring Boot starter that provides a configurable proxy/mock server for develop
 
 ## Installation
 
-Add the following dependency to your `pom.xml`:
+### Maven
+
+Add the GitHub Packages repository and dependency to your `pom.xml`:
 
 ```xml
-<dependency>
-    <groupId>io.github.areguig</groupId>
-    <artifactId>echo-proxy-spring-boot-starter</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-</dependency>
+<repositories>
+    <repository>
+        <id>github</id>
+        <name>GitHub areguig Apache Maven Packages</name>
+        <url>https://maven.pkg.github.com/areguig/spring-boot-starter-echo-proxy</url>
+    </repository>
+</repositories>
+
+<dependencies>
+    <dependency>
+        <groupId>io.github.areguig</groupId>
+        <artifactId>spring-boot-starter-echo-proxy</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+    </dependency>
+</dependencies>
+```
+
+### Gradle
+
+Add the GitHub Packages repository and dependency to your `build.gradle`:
+
+```groovy
+repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/areguig/spring-boot-starter-echo-proxy")
+    }
+}
+
+dependencies {
+    implementation 'io.github.areguig:spring-boot-starter-echo-proxy:0.1.0-SNAPSHOT'
+}
+```
+
+Or with Kotlin DSL (`build.gradle.kts`):
+
+```kotlin
+repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/areguig/spring-boot-starter-echo-proxy")
+    }
+}
+
+dependencies {
+    implementation("io.github.areguig:spring-boot-starter-echo-proxy:0.1.0-SNAPSHOT")
+}
 ```
 
 ## Configuration
