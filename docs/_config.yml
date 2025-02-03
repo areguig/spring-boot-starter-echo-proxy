@@ -1,0 +1,27 @@
+title: Echo Proxy
+description: Spring Boot starter for proxy/mock endpoints
+remote_theme: just-the-docs/just-the-docs
+baseurl: "/spring-boot-starter-echo-proxy"
+url: "https://areguig.github.io"
+
+# Theme settings
+color_scheme: light
+search_enabled: true
+heading_anchors: true
+
+# Aux links for the upper right navigation
+aux_links:
+  "View on GitHub":
+    - "//github.com/areguig/spring-boot-starter-echo-proxy"
+
+# Makes Aux links open in a new tab
+aux_links_new_tab: true
+
+# Navigation
+nav_external_links:
+  - title: Echo Proxy on GitHub
+    url: https://github.com/areguig/spring-boot-starter-echo-proxy
+    hide_icon: false
+
+# Footer content
+footer_content: "Copyright &copy; 2024 Akli REGUIG. Distributed under the MIT License." 
