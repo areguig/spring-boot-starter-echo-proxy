@@ -2,16 +2,20 @@ package io.github.areguig.echoproxy.integration.webflux;
 
 import io.github.areguig.echoproxy.controller.ProxyController;
 import io.github.areguig.echoproxy.handler.ProxyHandler;
-import io.github.areguig.echoproxy.integration.AbstractIntegrationTest;
+import io.github.areguig.echoproxy.test.TestApplication;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.TestPropertySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@SpringBootTest(
+        classes = TestApplication.class,
+        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
+)
 @ActiveProfiles("webflux")
-class WebFluxConfigurationIntegrationTest extends AbstractIntegrationTest {
+class WebFluxConfigurationIntegrationTest {
 
     @Autowired(required = false)
     private ProxyHandler proxyHandler;
@@ -26,9 +30,13 @@ class WebFluxConfigurationIntegrationTest extends AbstractIntegrationTest {
     }
 }
 
+@SpringBootTest(
+        classes = TestApplication.class,
+        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
+        properties = "echo.proxy.enabled=false"
+)
 @ActiveProfiles("webflux")
-@TestPropertySource(properties = "echo.proxy.enabled=false")
-class DisabledWebFluxConfigurationIntegrationTest extends AbstractIntegrationTest {
+class DisabledWebFluxConfigurationIntegrationTest {
 
     @Autowired(required = false)
     private ProxyHandler proxyHandler;

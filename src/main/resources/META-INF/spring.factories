@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-io.github.areguig.echoproxy.configuration.EchoProxyAutoConfiguration 
+io.github.areguig.echoproxy.configuration.EchoProxyAutoConfiguration

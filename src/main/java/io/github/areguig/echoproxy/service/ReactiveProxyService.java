@@ -24,13 +24,13 @@ public class ReactiveProxyService {
                                 WebClient.Builder webClientBuilder,
                                 RequestLogService logService) {
         this.configStorage = configStorage;
-        this.webClient = webClientBuilder.build();
+        webClient = webClientBuilder.build();
         this.logService = logService;
     }
 
     public Mono<ServerResponse> handleRequest(ServerRequest request) {
         String path = request.path();
-        HttpMethod method = HttpMethod.valueOf(request.methodName());
+        HttpMethod method = request.method();
         
         return request.bodyToMono(String.class)
                 .defaultIfEmpty("")
@@ -69,11 +69,11 @@ public class ReactiveProxyService {
     private Mono<ServerResponse> forwardRequest(ProxyConfig config, ServerRequest request) {
         return request.bodyToMono(String.class)
                 .defaultIfEmpty("")
-                .flatMap(body -> webClient.method(HttpMethod.valueOf(request.methodName()))
+                .flatMap(body -> webClient.method(request.method())
                         .uri(config.getTargetUrl() + request.path())
                         .headers(headers -> request.headers()
                             .asHttpHeaders()
-                            .forEach((name, values) -> headers.addAll(name, values)))
+                            .forEach(headers::addAll))
                         .bodyValue(body)
                         .exchangeToMono(response -> {
                             ServerResponse.BodyBuilder responseBuilder = ServerResponse

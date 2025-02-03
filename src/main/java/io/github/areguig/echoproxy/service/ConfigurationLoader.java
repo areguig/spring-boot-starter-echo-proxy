@@ -29,7 +29,8 @@ public class ConfigurationLoader {
         try {
             ClassPathResource resource = new ClassPathResource(properties.getConfigFile());
             try (InputStream is = resource.getInputStream()) {
-                return objectMapper.readValue(is, new TypeReference<List<ProxyConfig>>() {});
+                return objectMapper.readValue(is, new TypeReference<>() {
+                });
             }
         } catch (IOException e) {
             logger.warn("Could not load initial configuration from {}: {}", 

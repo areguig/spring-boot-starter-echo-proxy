@@ -2,6 +2,7 @@ package io.github.areguig.echoproxy.service;
 
 import io.github.areguig.echoproxy.model.ProxyConfig;
 import io.github.areguig.echoproxy.model.ProxyMode;
+import java.util.Objects;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -58,7 +59,7 @@ class ProxyServiceTest {
 
         ServerRequest request = mock(ServerRequest.class);
         when(request.path()).thenReturn("/test");
-        when(request.methodName()).thenReturn("GET");
+        when(request.method()).thenReturn(HttpMethod.GET);
         when(request.bodyToMono(String.class)).thenReturn(Mono.just(""));
         when(configStorage.findMatchingConfig("/test", HttpMethod.GET))
             .thenReturn(Optional.of(config));
@@ -68,10 +69,8 @@ class ProxyServiceTest {
         StepVerifier.create(proxyService.handleRequest(request))
             .expectNextMatches(response -> 
                 response.statusCode().value() == 200 &&
-                response.headers().getContentType()
-                    .equals(MediaType.APPLICATION_JSON) &&
-                response.headers().getFirst("X-Test")
-                    .equals("test-value"))
+                        Objects.equals(response.headers().getContentType(), MediaType.APPLICATION_JSON) &&
+                        Objects.equals(response.headers().getFirst("X-Test"), "test-value"))
             .verifyComplete();
     }
 
@@ -80,7 +79,7 @@ class ProxyServiceTest {
         // Given
         ServerRequest request = mock(ServerRequest.class);
         when(request.path()).thenReturn("/not-found");
-        when(request.methodName()).thenReturn("GET");
+        when(request.method()).thenReturn(HttpMethod.GET);
         when(request.bodyToMono(String.class)).thenReturn(Mono.just(""));
         when(configStorage.findMatchingConfig("/not-found", HttpMethod.GET))
             .thenReturn(Optional.empty());
