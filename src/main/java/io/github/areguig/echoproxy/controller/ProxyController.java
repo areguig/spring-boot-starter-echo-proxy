@@ -28,8 +28,7 @@ public class ProxyController {
         return proxyService.handleRequest(
             request.getRequestURI(),
             HttpMethod.valueOf(request.getMethod()),
-            body,
-                serverHttpRequest.getHeaders()
+            body, serverHttpRequest.getHeaders()
         );
     }
 } 
